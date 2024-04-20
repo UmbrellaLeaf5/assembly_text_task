@@ -1,0 +1,3 @@
+  .globl	IsStartsAndEndsWithCapital
+IsStartsAndEndsWithCapital:
+  ret

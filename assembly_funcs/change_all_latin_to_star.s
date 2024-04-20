@@ -1,0 +1,3 @@
+  .globl	ChangeAllLatinToStar
+ChangeAllLatinToStar:
+  ret

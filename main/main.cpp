@@ -1,3 +1,4 @@
+#include <cstring>
 #include <iostream>
 
 extern "C" bool IsStartsAndEndsWithCapital(char const* str);

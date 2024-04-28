@@ -15,7 +15,7 @@ IsStartsAndEndsWithCapital:
   popq %rdi           # and s from stack
 
   testl %eax, %eax    # !isupper(c)
-  jne .ISAEWRet
+  je .ISAEWRet
 
   # ----------------------      test FirstOg     ----------------------
 
@@ -29,7 +29,7 @@ IsStartsAndEndsWithCapital:
   popq %rdi           # and s from stack
 
   testl %eax, %eax    # !isupper(c)
-  jne .ISAEWRet
+  je .ISAEWRet
 
   # ----------------------      both isupper     ----------------------
 

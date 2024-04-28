@@ -11,7 +11,7 @@ extern "C" __attribute__((sysv_abi)) bool IsStartsAndEndsWithCapital(
 
 BOOST_AUTO_TEST_SUITE(IsStartsAndEndsWithCapital_C_Tests)
 
-BOOST_AUTO_TEST_CASE(Simple_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(Simple_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital("ABCD") == true);
   BOOST_TEST(IsStartsAndEndsWithCapital("X") == true);
 
@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(Simple_test, *boost::unit_test::disabled()) {
   BOOST_TEST(IsStartsAndEndsWithCapital("HellO") == true);
 }
 
-BOOST_AUTO_TEST_CASE(Long_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(Long_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital("longstringwitjgoewkpfwgld;"
                                         "wkopmlwqmkewngjrejfiedosnebkgrfemdsd"
                                         "ijfnghgfkdfjghfdkhsmallletters") ==
@@ -45,19 +45,20 @@ BOOST_AUTO_TEST_CASE(Long_test, *boost::unit_test::disabled()) {
              true);
 }
 
-BOOST_AUTO_TEST_CASE(Numbers_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(Numbers_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital("Hello123") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital("Hello123X") == true);
   BOOST_TEST(IsStartsAndEndsWithCapital("123") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital("A123B") == true);
 }
 
-BOOST_AUTO_TEST_CASE(EmptyStr_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(EmptyStr_test) {
+  BOOST_TEST(IsStartsAndEndsWithCapital(nullptr) == false);
   BOOST_TEST(IsStartsAndEndsWithCapital("") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital(" ") == false);
 }
 
-BOOST_AUTO_TEST_CASE(Extra_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(Extra_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital(" AB") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital("AB ") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital(" A B ") == false);
@@ -79,7 +80,7 @@ BOOST_AUTO_TEST_CASE(Extra_test, *boost::unit_test::disabled()) {
   BOOST_TEST(IsStartsAndEndsWithCapital("% ! Z @ # $ ^Y %") == false);
 }
 
-BOOST_AUTO_TEST_CASE(Special_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(Special_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital("A\nB") == true);
   BOOST_TEST(IsStartsAndEndsWithCapital("\nAB") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital("A\nB\n") == false);

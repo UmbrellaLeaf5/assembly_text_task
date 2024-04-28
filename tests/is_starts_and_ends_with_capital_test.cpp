@@ -8,9 +8,9 @@ namespace utf = boost::unit_test;
 
 extern "C" bool IsStartsAndEndsWithCapital_C(char const* str);
 
-BOOST_AUTO_TEST_SUITE(is_starts_and_ends_with_capital_test)
+BOOST_AUTO_TEST_SUITE(IsStartsAndEndsWithCapital_C_test)
 
-BOOST_AUTO_TEST_CASE(simple_test) {
+BOOST_AUTO_TEST_CASE(Simple_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C("ABCD") == true);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("X") == true);
 
@@ -21,14 +21,14 @@ BOOST_AUTO_TEST_CASE(simple_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C("abcX") == false);
 }
 
-BOOST_AUTO_TEST_CASE(hello_test) {
+BOOST_AUTO_TEST_CASE(Hello_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C("hello") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("Hello") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("hellO") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("HellO") == true);
 }
 
-BOOST_AUTO_TEST_CASE(long_test) {
+BOOST_AUTO_TEST_CASE(Long_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C("longstringwitjgoewkpfwgld;"
                                           "wkopmlwqmkewngjrejfiedosnebkgrfemdsd"
                                           "ijfnghgfkdfjghfdkhsmallletters") ==
@@ -46,14 +46,14 @@ BOOST_AUTO_TEST_CASE(long_test) {
              true);
 }
 
-BOOST_AUTO_TEST_CASE(numbers_test) {
+BOOST_AUTO_TEST_CASE(Numbers_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C("Hello123") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("Hello123X") == true);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("123") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("A123B") == true);
 }
 
-BOOST_AUTO_TEST_CASE(extra_test) {
+BOOST_AUTO_TEST_CASE(Extra_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C("") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C(" ") == false);
 
@@ -78,7 +78,7 @@ BOOST_AUTO_TEST_CASE(extra_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C("% ! Z @ # $ ^Y %") == false);
 }
 
-BOOST_AUTO_TEST_CASE(special_test) {
+BOOST_AUTO_TEST_CASE(Special_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C("A\nB") == true);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("\nAB") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("A\nB\n") == false);

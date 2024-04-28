@@ -5,40 +5,42 @@ IsStartsAndEndsWithCapital:
 
   # ----------------------      test LastOf      ----------------------
 
-  pushq %rdi          # store s on stack
+  pushq %rdi          # push s on stack
   call LastOf
 
-  pushq %rax          # store c on stack
+  pushq %rax          # push c on stack
   movsbl %al, %ecx    # char -> int
   call isupper
-  popq %rsi           # restore c
-  popq %rdi           # and s from stack
+  popq %rsi           # pop c from stack
+  popq %rdi           # pop s from stack
 
-  testl %eax, %eax    # !isupper(c)
-  je .ISAEWRet
+  testl %eax, %eax    # ? !isupper(c)
+  je .ISAEWRetFalse   # if (!isupper(c)) return false; 
 
-  # ----------------------      test FirstOg     ----------------------
+  # ----------------------      test FirstOf     ----------------------
 
-  pushq %rdi          # store s on stack
+  pushq %rdi          # push s on stack
   call FirstOf
 
-  pushq %rax          # store c on stack
+  pushq %rax          # push c on stack
   movsbl %al, %ecx    # char -> int
   call isupper
-  popq %rsi           # restore c
-  popq %rdi           # and s from stack
+  popq %rsi           # pop c from stack
+  popq %rdi           # pop s from stack
 
-  testl %eax, %eax    # !isupper(c)
-  je .ISAEWRet
+  testl %eax, %eax    # ? !isupper(c)
+  je .ISAEWRetFalse   # if (!isupper(c)) return false; 
 
-  # ----------------------      both isupper     ----------------------
+  # -------------------    both isupper == true    --------------------
 
   movb $1, %al        # c = true
   ret                 # return true
 
-.ISAEWRet:
+.ISAEWRetFalse:
   movb $0, %al        # c = false
   ret                 # return false
+
+
 
 FirstOf:
   testq %rdi, %rdi    # s ?= nullptr
@@ -54,6 +56,8 @@ FirstOf:
 .FONullptr:
   movb $0, %al        # c = '\0'
   ret
+
+
 
 LastOf:
   testq %rdi, %rdi    # s ?= nullptr

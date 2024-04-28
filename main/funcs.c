@@ -4,7 +4,7 @@
 
 // ---------------------- helping static functions ----------------------
 
-static char LastOf(const char* str) {
+static char LastOf_С(const char* str) {
   assert(str);
 
   char c = '\0';
@@ -13,7 +13,7 @@ static char LastOf(const char* str) {
   return c;
 }
 
-static char FirstOf(const char* str) {
+static char FirstOf_С(const char* str) {
   assert(str);
   return str[0];
 }
@@ -21,8 +21,8 @@ static char FirstOf(const char* str) {
 // ----------------------      task functions      ----------------------
 
 bool IsStartsAndEndsWithCapital_C(char const* str) {
-  char f = FirstOf(str);
-  char l = LastOf(str);
+  char f = FirstOf_С(str);
+  char l = LastOf_С(str);
 
   return isupper(f) && isupper(l);
 }
@@ -37,7 +37,7 @@ void ChangeAllLatinToStar_C(char* str) {
 void RemoveAllFirstRepeats_C(char* str) {
   if (!str) return;
 
-  char f = FirstOf(str);
+  char f = FirstOf_С(str);
   char* mod_str = str;
 
   for (; *str != '\0'; ++str)

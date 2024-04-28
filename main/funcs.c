@@ -20,7 +20,7 @@ __attribute__((sysv_abi)) static char FirstOf(const char* str) {
 
 // ----------------------      task functions      ----------------------
 
-__attribute__((sysv_abi)) bool IsStartsAndEndsWithCapital_C(char const* str) {
+bool IsStartsAndEndsWithCapital_C(char const* str) {
   assert(str);
 
   char f = FirstOf(str);
@@ -29,14 +29,14 @@ __attribute__((sysv_abi)) bool IsStartsAndEndsWithCapital_C(char const* str) {
   return isupper(f) == isupper(l);
 }
 
-__attribute__((sysv_abi)) void ChangeAllLatinToStar_C(char* str) {
+void ChangeAllLatinToStar_C(char* str) {
   if (!str) return;
 
   for (; *str != '\0'; ++str)
     if (isalpha(*str)) *str = '*';
 }
 
-__attribute__((sysv_abi)) void RemoveAllFirstRepeats_C(char* str) {
+void RemoveAllFirstRepeats_C(char* str) {
   char f = FirstOf(str);
   char* mod_str = str;
 

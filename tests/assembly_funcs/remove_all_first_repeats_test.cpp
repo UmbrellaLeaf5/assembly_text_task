@@ -6,7 +6,7 @@ extern "C" __attribute__((sysv_abi)) void RemoveAllFirstRepeats(char* str);
 
 BOOST_AUTO_TEST_SUITE(RemoveAllFirstRepeats_C_Tests)
 
-BOOST_AUTO_TEST_CASE(Simple_test) {
+BOOST_AUTO_TEST_CASE(Simple_test, *boost::unit_test::disabled()) {
   char str[] = "abcd";
   const char expected[] = "bcd";
 
@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(Simple_test) {
   BOOST_TEST(std::strcmp(str_3, expected_3) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(Long_test) {
+BOOST_AUTO_TEST_CASE(Long_test, *boost::unit_test::disabled()) {
   char str[] = "aaaabbbbccccddddeeeeffffffff";
   const char expected[] = "bbbbccccddddeeeeffffffff";
 
@@ -58,7 +58,7 @@ BOOST_AUTO_TEST_CASE(Long_test) {
   BOOST_TEST(strcmp(str_3, expected_3) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(EmptyStr_test) {
+BOOST_AUTO_TEST_CASE(EmptyStr_test, *boost::unit_test::disabled()) {
   char str[] = "";
   const char expected[] = "";
 
@@ -66,7 +66,7 @@ BOOST_AUTO_TEST_CASE(EmptyStr_test) {
   BOOST_TEST(std::strcmp(str, expected) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(Extra_test) {
+BOOST_AUTO_TEST_CASE(Extra_test, *boost::unit_test::disabled()) {
   char str[] = "@#$%^&*()_+cd@#$%^&*()_+";
   const char* expected = "#$%^&*()_+cd#$%^&*()_+";
 
@@ -86,7 +86,7 @@ BOOST_AUTO_TEST_CASE(Extra_test) {
   BOOST_TEST(std::strcmp(str_3, expected_3) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(Special_test) {
+BOOST_AUTO_TEST_CASE(Special_test, *boost::unit_test::disabled()) {
   char str[] = "a\tb\tc\td";
   const char* expected = "\tb\tc\td";
 

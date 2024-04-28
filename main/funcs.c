@@ -4,7 +4,7 @@
 
 // ---------------------- helping static functions ----------------------
 
-__attribute__((sysv_abi)) static char LastOf(const char* str) {
+static char LastOf(const char* str) {
   assert(str);
 
   char c = '\0';
@@ -13,7 +13,7 @@ __attribute__((sysv_abi)) static char LastOf(const char* str) {
   return c;
 }
 
-__attribute__((sysv_abi)) static char FirstOf(const char* str) {
+static char FirstOf(const char* str) {
   assert(str);
   return str[0];
 }
@@ -26,7 +26,7 @@ bool IsStartsAndEndsWithCapital_C(char const* str) {
   char f = FirstOf(str);
   char l = LastOf(str);
 
-  return isupper(f) == isupper(l);
+  return isupper(f) && isupper(l);
 }
 
 void ChangeAllLatinToStar_C(char* str) {

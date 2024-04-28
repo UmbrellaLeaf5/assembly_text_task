@@ -1,7 +1,7 @@
   .globl	IsStartsAndEndsWithCapital
 IsStartsAndEndsWithCapital:
   testq %rdi, %rdi    # s ?= nullptr
-  je .FONullptr       # if (s == nullptr) c = '\0'; 
+  je .ISAEWRetFalse   # if (s == nullptr) return false; 
 
   # ----------------------      test LastOf      ----------------------
 

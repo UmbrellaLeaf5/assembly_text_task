@@ -19,9 +19,7 @@ BOOST_AUTO_TEST_CASE(Simple_test) {
 
   BOOST_TEST(IsStartsAndEndsWithCapital_C("Abc") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("abcX") == false);
-}
 
-BOOST_AUTO_TEST_CASE(Hello_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C("hello") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("Hello") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("hellO") == false);
@@ -53,10 +51,12 @@ BOOST_AUTO_TEST_CASE(Numbers_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C("A123B") == true);
 }
 
-BOOST_AUTO_TEST_CASE(Extra_test) {
+BOOST_AUTO_TEST_CASE(EmptyStr_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C("") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C(" ") == false);
+}
 
+BOOST_AUTO_TEST_CASE(Extra_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital_C(" AB") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C("AB ") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital_C(" A B ") == false);

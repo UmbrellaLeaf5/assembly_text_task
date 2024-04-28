@@ -3,14 +3,21 @@ IsStartsAndEndsWithCapital:
   ret
 
 FirstOf:
+  testq %rdi, %rdi    # s ?= nullptr
+  je .FONullptr       # if (s == nullptr) c = 0; 
   movb (%rdi), %r8b   # get a byte
   testb %r8b, %r8b    # *s ?= '\0'
   jne	.FONotEqual     # if (*s != '\0') c = *s; 
 .FONotEqual:
-  movb %r8b, %al
+  movb %r8b, %al      # c = *s
+  ret
+.FONullptr:
+  movb $0, %al        # c = 0
   ret
 
 LastOf:
+  testq %rdi, %rdi    # s ?= nullptr
+  je .LONullptr       # if (s == nullptr) c = 0; 
   xorb %al, %al       # init: c = 0
 .LOIter:
   movb (%rdi), %r8b   # get a byte
@@ -20,4 +27,7 @@ LastOf:
   incq %rdi           # next byte
   jmp .LOIter         # continue iteration
 .LORet:
+  ret
+.LONullptr:
+  movb $0, %al        # c = 0
   ret

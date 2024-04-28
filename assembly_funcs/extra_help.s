@@ -1,7 +1,4 @@
-  .globl	IsStartsAndEndsWithCapital
-IsStartsAndEndsWithCapital:
-  ret
-
+  .globl FirstOf
 FirstOf:
   testq %rdi, %rdi    # s ?= nullptr
   je .FONullptr       # if (s == nullptr) c = 0; 
@@ -15,6 +12,7 @@ FirstOf:
   movb $0, %al        # c = 0
   ret
 
+  .globl LastOf
 LastOf:
   testq %rdi, %rdi    # s ?= nullptr
   je .LONullptr       # if (s == nullptr) c = 0; 

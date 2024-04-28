@@ -21,8 +21,6 @@ static char FirstOf(const char* str) {
 // ----------------------      task functions      ----------------------
 
 bool IsStartsAndEndsWithCapital_C(char const* str) {
-  assert(str);
-
   char f = FirstOf(str);
   char l = LastOf(str);
 
@@ -37,6 +35,8 @@ void ChangeAllLatinToStar_C(char* str) {
 }
 
 void RemoveAllFirstRepeats_C(char* str) {
+  if (!str) return;
+
   char f = FirstOf(str);
   char* mod_str = str;
 

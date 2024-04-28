@@ -8,7 +8,7 @@ project(TextTask LANGUAGES C CXX ASM)
 cmake_path(SET MAIN_DIR "${CMAKE_SOURCE_DIR}/main")
 cmake_path(SET ASM_DIR "${CMAKE_SOURCE_DIR}/assembly_funcs")
 
-file(GLOB_RECURSE ASM_SOURCES "${ASM_DIR}/.s" "${ASM_DIR}/*.asm")
+file(GLOB_RECURSE ASM_SOURCES "${ASM_DIR}/*.s" "${ASM_DIR}/*.asm")
 file(GLOB_RECURSE C_CPP_SOURCES "${MAIN_DIR}/*.cpp" "${MAIN_DIR}/*.c")
 
 set_property(SOURCE ASM_SOURCES APPEND PROPERTY COMPILE_OPTIONS "-x" "assembler-with-cpp")

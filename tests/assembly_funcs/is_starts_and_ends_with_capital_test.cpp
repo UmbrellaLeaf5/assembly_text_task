@@ -53,6 +53,7 @@ BOOST_AUTO_TEST_CASE(Numbers_test) {
 }
 
 BOOST_AUTO_TEST_CASE(EmptyStr_test) {
+  BOOST_TEST(IsStartsAndEndsWithCapital(nullptr) == false);
   BOOST_TEST(IsStartsAndEndsWithCapital("") == false);
   BOOST_TEST(IsStartsAndEndsWithCapital(" ") == false);
 }

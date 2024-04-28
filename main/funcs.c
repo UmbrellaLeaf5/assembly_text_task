@@ -26,7 +26,7 @@ bool IsStartsAndEndsWithCapital_C(char const* str) {
   char f = FirstOf(str);
   char l = LastOf(str);
 
-  return isupper(f) == isupper(l);
+  return isupper(f) && isupper(l);
 }
 
 void ChangeAllLatinToStar_C(char* str) {

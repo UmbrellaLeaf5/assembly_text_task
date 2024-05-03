@@ -6,7 +6,7 @@
  * и оканчивается заглавной латинской буквой
  * @param str: входной текст
  * @return true: свойство выполняется
- * @return false: свойства не выполняется
+ * @return false: свойство не выполняется
  */
 extern "C" __attribute__((sysv_abi)) bool IsStartsAndEndsWithCapital(
     char const* str);
@@ -30,7 +30,7 @@ extern "C" __attribute__((sysv_abi)) void RemoveAllFirstRepeats(char* str);
  * и оканчивается заглавной латинской буквой
  * @param str: входной текст
  * @return true: свойство выполняется
- * @return false: свойства не выполняется
+ * @return false: свойство не выполняется
  */
 extern "C" bool IsStartsAndEndsWithCapital_C(char const* str);
 

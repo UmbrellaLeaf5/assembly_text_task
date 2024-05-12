@@ -3,7 +3,7 @@ IsStartsAndEndsWithCapital:
   testq %rdi, %rdi    # s ?= nullptr
   je .ISAEWRetFalse   # if (s == nullptr) return false; 
 
-  # ----------------------      test LastOf      ----------------------
+  # ----------------------      check LastOf     ----------------------
 
   pushq %rdi          # push s on stack
   call LastOf
@@ -17,7 +17,7 @@ IsStartsAndEndsWithCapital:
   testl %eax, %eax    # ? !isupper(c)
   je .ISAEWRetFalse   # if (!isupper(c)) return false; 
 
-  # ----------------------      test FirstOf     ----------------------
+  # ----------------------      check FirstOf    ----------------------
 
   pushq %rdi          # push s on stack
   call FirstOf

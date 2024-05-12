@@ -48,6 +48,51 @@ extern "C" void ChangeAllLatinToStar_C(char* str);
  */
 extern "C" void RemoveAllFirstRepeats_C(char* str);
 
-int main() { return 0; }
+static char str[SHRT_MAX];
+static char str_copy[SHRT_MAX];
 
-// TODO: сделать в main полноценный ввод текста с консоли
+/**
+ * @brief Отлавливает Ctrl+C
+ * @param signal_num: номер сигнала
+ */
+static void SigintHandler(const int signal_num) {
+  std::cout << std::endl << "Exiting the program..." << std::endl;
+  exit(signal_num);
+}
+
+int main() {
+  signal(SIGINT, SigintHandler);
+
+  for (;;) {
+    std::cout << "Enter the text (one string): " << std::endl;
+    std::cin.getline(str, SHRT_MAX);
+    std::cout << std::endl;
+
+    if (std::cin.eof()) goto end;
+
+    strcpy(str_copy, str);
+
+    for (int i = 0; str[i]; i++) str[i] = tolower(str[i]);
+
+    if (!strcmp(str, "quit") || !strcmp(str, "exit")) goto end;
+
+    if (IsStartsAndEndsWithCapital(str_copy)) {
+      std::cout << "! Begins and ends with a capital letter !" << std::endl;
+      ChangeAllLatinToStar(str_copy);
+      std::cout << "Modified string (change all latin to star): " << std::endl
+                << str_copy << std::endl
+                << std::endl;
+    } else {
+      std::cout << "! Does not begin or end with a capital letter !"
+                << std::endl;
+      RemoveAllFirstRepeats(str_copy);
+      std::cout << "Modified string (remove all first repeats): " << std::endl
+                << str_copy << std::endl
+                << std::endl;
+    }
+  }
+
+end:
+  std::cout << "Exiting the program..." << std::endl;
+  return 0;
+}

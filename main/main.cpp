@@ -50,5 +50,5 @@ extern "C" void RemoveAllFirstRepeats_C(char* str);
 
 int main() { return 0; }
 
-// TODO: реализовать ещё 2 функции на языке ассемблера
+// TODO: реализовать ещё 1 функцию на языке ассемблера
 // TODO: сделать в main полноценный ввод текста с консоли

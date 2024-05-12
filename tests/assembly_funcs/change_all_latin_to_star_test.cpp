@@ -4,17 +4,23 @@
 
 extern "C" __attribute__((sysv_abi)) void ChangeAllLatinToStar(char* str);
 
-BOOST_AUTO_TEST_SUITE(ChangeAllLatinToStar_C_Tests)
+BOOST_AUTO_TEST_SUITE(ChangeAllLatinToStar_Tests)
 
-BOOST_AUTO_TEST_CASE(Simple_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(Simple_test) {
   char str[] = "HelloWorld";
   const char expected[] = "**********";
 
   ChangeAllLatinToStar(str);
   BOOST_TEST(std::strcmp(str, expected) == 0);
+
+  char str_2[] = "H1e2l3l4o5W6o7r8l9d";
+  const char expected_2[] = "*1*2*3*4*5*6*7*8*9*";
+
+  ChangeAllLatinToStar(str_2);
+  BOOST_TEST(std::strcmp(str_2, expected_2) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(Long_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(Long_test) {
   char str[] = "ThisIsAVeryLongStringWithLotsOfLatinCharacters";
   const char expected[] = "**********************************************";
 
@@ -28,7 +34,7 @@ BOOST_AUTO_TEST_CASE(Long_test, *boost::unit_test::disabled()) {
   BOOST_TEST(std::strcmp(str_2, expected_2) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(EmptyStr_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(EmptyStr_test) {
   char str[] = "";
 
   ChangeAllLatinToStar(str);
@@ -40,7 +46,7 @@ BOOST_AUTO_TEST_CASE(EmptyStr_test, *boost::unit_test::disabled()) {
   BOOST_TEST(str_2 == nullptr);
 }
 
-BOOST_AUTO_TEST_CASE(Extra_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(Extra_test) {
   char str[] = "Hello123!@#$";
   const char expected[] = "*****123!@#$";
 
@@ -72,7 +78,7 @@ BOOST_AUTO_TEST_CASE(Extra_test, *boost::unit_test::disabled()) {
   BOOST_TEST(std::strcmp(str_5, expected_5) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(French_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(French_test) {
   char str[] = "Bonjour, Hélène!";
   const char expected[] = "*******, *é*è**!";
 
@@ -80,7 +86,7 @@ BOOST_AUTO_TEST_CASE(French_test, *boost::unit_test::disabled()) {
   BOOST_TEST(std::strcmp(str, expected) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(Math_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(Math_test) {
   char str[] = "x^2 + y^2 = z^2";
   const char expected[] = "*^2 + *^2 = *^2";
 
@@ -88,7 +94,7 @@ BOOST_AUTO_TEST_CASE(Math_test, *boost::unit_test::disabled()) {
   BOOST_TEST(std::strcmp(str, expected) == 0);
 }
 
-BOOST_AUTO_TEST_CASE(Special_test, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(Special_test) {
   char str[] = "Hello\nWorld\tTest";
   const char expected[] = "*****\n*****\t****";
 

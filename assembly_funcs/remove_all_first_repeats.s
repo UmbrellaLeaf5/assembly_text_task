@@ -17,7 +17,7 @@ RemoveAllFirstRepeats:
   testb %al, %al      # *s ?= '\0'
   je .RAFRRetByTheEnd # if (*s == '\0') *mod_str = '\0'; return;
 
-  testb %al, %r8b     # *s ?= f
+  cmpb %al, %r8b      # *s ?= f
   je .RAFRToNext      # if (*s == f) continue;
 
   movb %al, (%r9)     # *mod_str = *s;
@@ -31,7 +31,6 @@ RemoveAllFirstRepeats:
   ret
 
 .RAFRRetByTheEnd:
-  incq %r9
   movb $0, (%r9)
   movq %r9, %rdi     # s = mod_str
   ret

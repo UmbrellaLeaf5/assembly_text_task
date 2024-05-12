@@ -3,25 +3,25 @@
 
 // ---------------------- helping static functions ----------------------
 
-static char LastOf_С(const char* str) {
-  if (!str) return '\0';
+static char LastOf_С(const char* s) {
+  if (!s) return '\0';
 
   char c = '\0';
-  for (; *str != '\0'; ++str) c = *str;
+  for (; *s != '\0'; ++s) c = *s;
 
   return c;
 }
 
-static char FirstOf_С(const char* str) {
-  if (!str) return '\0';
-  return str[0];
+static char FirstOf_С(const char* s) {
+  if (!s) return '\0';
+  return s[0];
 }
 
 // ----------------------      task functions      ----------------------
 
-bool IsStartsAndEndsWithCapital_C(char const* str) {
-  char f = FirstOf_С(str);
-  char l = LastOf_С(str);
+bool IsStartsAndEndsWithCapital_C(char const* s) {
+  char f = FirstOf_С(s);
+  char l = LastOf_С(s);
 
   if (isupper(f))
     if (isupper(l)) return true;
@@ -30,22 +30,22 @@ bool IsStartsAndEndsWithCapital_C(char const* str) {
   return false;
 }
 
-void ChangeAllLatinToStar_C(char* str) {
-  if (!str) return;
+void ChangeAllLatinToStar_C(char* s) {
+  if (!s) return;
 
-  for (; *str != '\0'; ++str)
-    if (isalpha(*str)) *str = '*';
+  for (; *s != '\0'; ++s)
+    if (isalpha(*s)) *s = '*';
 }
 
-void RemoveAllFirstRepeats_C(char* str) {
-  if (!str) return;
+void RemoveAllFirstRepeats_C(char* s) {
+  if (!s) return;
 
-  char f = FirstOf_С(str);
-  char* mod_str = str;
+  char f = FirstOf_С(s);
+  char* mod_str = s;
 
-  for (; *str != '\0'; ++str)
-    if (*str != f) {
-      *mod_str = *str;
+  for (; *s != '\0'; ++s)
+    if (*s != f) {
+      *mod_str = *s;
       mod_str++;
     }
 

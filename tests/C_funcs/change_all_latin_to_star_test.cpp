@@ -12,6 +12,12 @@ BOOST_AUTO_TEST_CASE(Simple_test) {
 
   ChangeAllLatinToStar_C(str);
   BOOST_TEST(std::strcmp(str, expected) == 0);
+
+  char str_2[] = "H1e2l3l4o5W6o7r8l9d";
+  const char expected_2[] = "*1*2*3*4*5*6*7*8*9*";
+
+  ChangeAllLatinToStar_C(str_2);
+  BOOST_TEST(std::strcmp(str_2, expected_2) == 0);
 }
 
 BOOST_AUTO_TEST_CASE(Long_test) {

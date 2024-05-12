@@ -9,7 +9,7 @@ namespace utf = boost::unit_test;
 extern "C" __attribute__((sysv_abi)) bool IsStartsAndEndsWithCapital(
     char const* str);
 
-BOOST_AUTO_TEST_SUITE(IsStartsAndEndsWithCapital_C_Tests)
+BOOST_AUTO_TEST_SUITE(IsStartsAndEndsWithCapital_Tests)
 
 BOOST_AUTO_TEST_CASE(Simple_test) {
   BOOST_TEST(IsStartsAndEndsWithCapital("ABCD") == true);

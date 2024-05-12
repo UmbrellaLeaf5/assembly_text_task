@@ -4,7 +4,7 @@
 
 extern "C" __attribute__((sysv_abi)) void ChangeAllLatinToStar(char* str);
 
-BOOST_AUTO_TEST_SUITE(ChangeAllLatinToStar_C_Tests)
+BOOST_AUTO_TEST_SUITE(ChangeAllLatinToStar_Tests)
 
 BOOST_AUTO_TEST_CASE(Simple_test) {
   char str[] = "HelloWorld";

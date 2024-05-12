@@ -19,6 +19,13 @@ static char FirstOf_С(const char* s) {
 
 // ----------------------      task functions      ----------------------
 
+/**
+ * @brief Проверяет свойство текста: текст начинается заглавной латинской буквой
+ * и оканчивается заглавной латинской буквой
+ * @param str: входной текст
+ * @return true: свойство выполняется
+ * @return false: свойство не выполняется
+ */
 bool IsStartsAndEndsWithCapital_C(char const* s) {
   char f = FirstOf_С(s);
   char l = LastOf_С(s);
@@ -30,6 +37,11 @@ bool IsStartsAndEndsWithCapital_C(char const* s) {
   return false;
 }
 
+/**
+ * @brief Производит операцию над текстом: заменить каждую латинскую букву
+ * символом '*'
+ * @param str: входной текст
+ */
 void ChangeAllLatinToStar_C(char* s) {
   if (!s) return;
 
@@ -37,6 +49,11 @@ void ChangeAllLatinToStar_C(char* s) {
     if (isalpha(*s)) *s = '*';
 }
 
+/**
+ * @brief Производит операцию над текстом: удалить из текста все повторные
+ * вхождения его первого символа
+ * @param str: входной текст
+ */
 void RemoveAllFirstRepeats_C(char* s) {
   if (!s) return;
 

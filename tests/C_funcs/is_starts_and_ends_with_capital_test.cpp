@@ -3,9 +3,13 @@
 #endif
 #include <boost/test/unit_test.hpp>
 
-namespace tt = boost::test_tools;
-namespace utf = boost::unit_test;
-
+/**
+ * @brief Проверяет свойство текста: текст начинается заглавной латинской буквой
+ * и оканчивается заглавной латинской буквой
+ * @param str: входной текст
+ * @return true: свойство выполняется
+ * @return false: свойство не выполняется
+ */
 extern "C" bool IsStartsAndEndsWithCapital_C(char const* str);
 
 BOOST_AUTO_TEST_SUITE(IsStartsAndEndsWithCapital_C_test)

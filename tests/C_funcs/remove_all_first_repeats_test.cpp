@@ -2,6 +2,11 @@
 #include <cctype>
 #include <cstring>
 
+/**
+ * @brief Производит операцию над текстом: удалить из текста все повторные
+ * вхождения его первого символа
+ * @param str: входной текст
+ */
 extern "C" void RemoveAllFirstRepeats_C(char* str);
 
 BOOST_AUTO_TEST_SUITE(RemoveAllFirstRepeats_C_Tests)

@@ -2,6 +2,11 @@
 #include <cctype>
 #include <cstring>
 
+/**
+ * @brief Производит операцию над текстом: заменить каждую латинскую букву
+ * символом '*'
+ * @param str: входной текст
+ */
 extern "C" __attribute__((sysv_abi)) void ChangeAllLatinToStar(char* str);
 
 BOOST_AUTO_TEST_SUITE(ChangeAllLatinToStar_Tests)

@@ -4,7 +4,7 @@
 
 extern "C" __attribute__((sysv_abi)) void RemoveAllFirstRepeats(char* str);
 
-BOOST_AUTO_TEST_SUITE(RemoveAllFirstRepeats_C_Tests)
+BOOST_AUTO_TEST_SUITE(RemoveAllFirstRepeats_Tests)
 
 BOOST_AUTO_TEST_CASE(Simple_test, *boost::unit_test::disabled()) {
   char str[] = "abcd";

@@ -9,7 +9,7 @@ namespace utf = boost::unit_test;
 extern "C" __attribute__((sysv_abi)) char FirstOf(char const* str);
 extern "C" __attribute__((sysv_abi)) char LastOf(char const* str);
 
-BOOST_AUTO_TEST_SUITE(IsStartsAndEndsWithCapital_C_test)
+BOOST_AUTO_TEST_SUITE(Extra_help_Tests)
 
 BOOST_AUTO_TEST_CASE(Simple_test) {
   BOOST_TEST(FirstOf("ABCD") == 'A');

@@ -14,7 +14,7 @@ ChangeAllLatinToStar:
   popq %rsi           # pop char from stack
 
   testl %eax, %eax    # ? !isalpha(char)
-  je .CALTSToNext     # if (!isalpha(c)) continue;
+  je .CALTSToNext     # if (!isalpha(char)) continue;
 
   movb $42, (%rdi)     # else: *char = '*';
 

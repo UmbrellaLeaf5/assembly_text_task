@@ -1,12 +1,12 @@
   .globl	ChangeAllLatinToStar
 ChangeAllLatinToStar:
   testq %rdi, %rdi    # s ?= nullptr
-  je .CALTSRet        # if (s == nullptr) return; 
+  je .CALTS_Ret        # if (s == nullptr) return; 
 
-.CALTSIter:
+.CALTS_Iter:
   movb (%rdi), %al    # get a byte (char)
   testb %al, %al      # *s ?= '\0'
-  je .CALTSRet        # if (*s == '\0') return;
+  je .CALTS_Ret        # if (*s == '\0') return;
 
   pushq %rax          # push char on stack
   movsbl %al, %ecx    # char -> int
@@ -14,13 +14,13 @@ ChangeAllLatinToStar:
   popq %rsi           # pop char from stack
 
   testl %eax, %eax    # ? !isalpha(char)
-  je .CALTSToNext     # if (!isalpha(char)) continue;
+  je .CALTS_ToNext     # if (!isalpha(char)) continue;
 
   movb $42, (%rdi)     # else: *char = '*';
 
-.CALTSToNext:
+.CALTS_ToNext:
   incq %rdi           # next byte (char)
-  jmp .CALTSIter      # continue iteration
+  jmp .CALTS_Iter      # continue iteration
 
-.CALTSRet:
+.CALTS_Ret:
   ret

@@ -1,12 +1,17 @@
 # language: CMake
 
-project(tests VERSION 0.1 LANGUAGES CXX)
+project(Tests LANGUAGES C CXX ASM)
 
-file(GLOB_RECURSE C_FUNCS_TEST_SOURCES "C_funcs/*.cpp" "test.cpp")
+set(Boost_USE_STATIC_LIBS OFF)
+
+find_package(Boost REQUIRED COMPONENTS locale unit_test_framework)
+
+# ----------------------        asm tests        ----------------------
 file(GLOB_RECURSE ASM_FUNCS_TEST_SOURCES "assembly_funcs/*.cpp" "test.cpp")
-
-add_executable(C_funcs_tests ${C_FUNCS_TEST_SOURCES} "${MAIN_DIR}/funcs.c")
 add_executable(ASM_funcs_tests ${ASM_FUNCS_TEST_SOURCES} ${ASM_SOURCES})
-
-target_link_libraries(C_funcs_tests PRIVATE ${Boost_LIBRARIES})
 target_link_libraries(ASM_funcs_tests PRIVATE ${Boost_LIBRARIES})
+
+# ----------------------         c tests         ----------------------
+file(GLOB_RECURSE C_FUNCS_TEST_SOURCES "C_funcs/*.cpp" "test.cpp")
+add_executable(C_funcs_tests ${C_FUNCS_TEST_SOURCES} "${MAIN_DIR}/funcs.c")
+target_link_libraries(C_funcs_tests PRIVATE ${Boost_LIBRARIES})

@@ -26,32 +26,6 @@ extern "C" __attribute__((sysv_abi)) void ChangeAllLatinToStar(char* str);
 extern "C" __attribute__((sysv_abi)) void RemoveAllFirstRepeats(char* str);
 
 /**
- * @brief Проверяет свойство текста: текст начинается заглавной латинской буквой
- * и оканчивается заглавной латинской буквой
- * @param str: входной текст
- * @return true: свойство выполняется
- * @return false: свойство не выполняется
- */
-extern "C" bool IsStartsAndEndsWithCapital_C(char const* str);
-
-/**
- * @brief Производит операцию над текстом: заменить каждую латинскую букву
- * символом '*'
- * @param str: входной текст
- */
-extern "C" void ChangeAllLatinToStar_C(char* str);
-
-/**
- * @brief Производит операцию над текстом: удалить из текста все повторные
- * вхождения его первого символа
- * @param str: входной текст
- */
-extern "C" void RemoveAllFirstRepeats_C(char* str);
-
-static char str[SHRT_MAX];
-static char str_copy[SHRT_MAX];
-
-/**
  * @brief Отлавливает Ctrl+C
  * @param signal_num: номер сигнала
  */
@@ -60,33 +34,40 @@ static void SigintHandler(const int signal_num) {
   exit(signal_num);
 }
 
+static char str[SHRT_MAX];
+static char str_copy[SHRT_MAX];
+
 int main() {
   signal(SIGINT, SigintHandler);
 
   for (;;) {
+    // getting a line
     std::cout << "Enter the text (one string): " << std::endl;
     std::cin.getline(str, SHRT_MAX);
     std::cout << std::endl;
 
+    // if cin fail
     if (std::cin.eof()) goto end;
 
     strcpy(str_copy, str);
 
-    for (int i = 0; str[i]; i++) str[i] = tolower(str[i]);
-
+    for (int i = 0; str[i]; i++) str[i] = tolower(str[i]);  // to lower case
     if (!strcmp(str, "quit") || !strcmp(str, "exit")) goto end;
 
     if (IsStartsAndEndsWithCapital(str_copy)) {
-      std::cout << "! Begins and ends with a capital letter !" << std::endl;
+      std::cout << " @property: Begins and ends with a capital letter."
+                << std::endl;
       ChangeAllLatinToStar(str_copy);
-      std::cout << "Modified string (change all latin to star): " << std::endl
+      std::cout << "Modified string (@rule: change all latin to star): "
+                << std::endl
                 << str_copy << std::endl
                 << std::endl;
     } else {
-      std::cout << "! Does not begin or end with a capital letter !"
+      std::cout << " @property: Does not begin or end with a capital letter."
                 << std::endl;
       RemoveAllFirstRepeats(str_copy);
-      std::cout << "Modified string (remove all first repeats): " << std::endl
+      std::cout << "Modified string (@rule: remove all first repeats): "
+                << std::endl
                 << str_copy << std::endl
                 << std::endl;
     }

@@ -3,7 +3,7 @@
 
 // ---------------------- helping static functions ----------------------
 
-static char LastOf_С(const char* s) {
+static char LastOf(const char* s) {
   if (!s) return '\0';
 
   char c = '\0';
@@ -12,7 +12,7 @@ static char LastOf_С(const char* s) {
   return c;
 }
 
-static char FirstOf_С(const char* s) {
+static char FirstOf(const char* s) {
   if (!s) return '\0';
   return s[0];
 }
@@ -26,9 +26,9 @@ static char FirstOf_С(const char* s) {
  * @return true: свойство выполняется
  * @return false: свойство не выполняется
  */
-bool IsStartsAndEndsWithCapital_C(char const* s) {
-  char f = FirstOf_С(s);
-  char l = LastOf_С(s);
+bool IsStartsAndEndsWithCapital(char const* s) {
+  char f = FirstOf(s);
+  char l = LastOf(s);
 
   if (isupper(f))
     if (isupper(l)) return true;
@@ -42,7 +42,7 @@ bool IsStartsAndEndsWithCapital_C(char const* s) {
  * символом '*'
  * @param str: входной текст
  */
-void ChangeAllLatinToStar_C(char* s) {
+void ChangeAllLatinToStar(char* s) {
   if (!s) return;
 
   for (; *s != '\0'; ++s)
@@ -54,10 +54,10 @@ void ChangeAllLatinToStar_C(char* s) {
  * вхождения его первого символа
  * @param str: входной текст
  */
-void RemoveAllFirstRepeats_C(char* s) {
+void RemoveAllFirstRepeats(char* s) {
   if (!s) return;
 
-  char f = FirstOf_С(s);
+  char f = FirstOf(s);
   char* mod_str = s;
 
   for (; *s != '\0'; ++s)

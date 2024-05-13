@@ -1,6 +1,4 @@
 #include <boost/test/unit_test.hpp>
-#include <cctype>
-#include <cstring>
 
 /**
  * @brief Производит операцию над текстом: удалить из текста все повторные

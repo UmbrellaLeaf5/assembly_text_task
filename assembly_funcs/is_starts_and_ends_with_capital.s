@@ -1,7 +1,7 @@
   .globl	IsStartsAndEndsWithCapital
 IsStartsAndEndsWithCapital:
   testq %rdi, %rdi    # s ?= nullptr
-  je .ISAEWRetFalse   # if (s == nullptr) return false; 
+  je .ISAEWC_RetFalse   # if (s == nullptr) return false; 
 
   # ----------------------      check LastOf     ----------------------
 
@@ -15,7 +15,7 @@ IsStartsAndEndsWithCapital:
   popq %rdi           # pop s from stack
 
   testl %eax, %eax    # ? !isupper(c)
-  je .ISAEWRetFalse   # if (!isupper(c)) return false; 
+  je .ISAEWC_RetFalse   # if (!isupper(c)) return false; 
 
   # ----------------------      check FirstOf    ----------------------
 
@@ -29,14 +29,14 @@ IsStartsAndEndsWithCapital:
   popq %rdi           # pop s from stack
 
   testl %eax, %eax    # ? !isupper(c)
-  je .ISAEWRetFalse   # if (!isupper(c)) return false; 
+  je .ISAEWC_RetFalse   # if (!isupper(c)) return false; 
 
   # -------------------    both isupper == true    --------------------
 
   movb $1, %al        # c = true
   ret                 # return true
 
-.ISAEWRetFalse:
+.ISAEWC_RetFalse:
   movb $0, %al        # c = false
   ret                 # return false
 
@@ -44,16 +44,16 @@ IsStartsAndEndsWithCapital:
 
 FirstOf:
   testq %rdi, %rdi    # s ?= nullptr
-  je .FONullptr       # if (s == nullptr) c = '\0';
+  je .FO_Nullptr       # if (s == nullptr) c = '\0';
   movb (%rdi), %r8b   # get a byte (char)
   testb %r8b, %r8b    # *s ?= '\0'
-  jne	.FONotEqual     # if (*s != '\0') c = *s;
+  jne	.FO_NotEqual     # if (*s != '\0') c = *s;
 
-.FONotEqual:
+.FO_NotEqual:
   movb %r8b, %al      # c = *s
   ret
 
-.FONullptr:
+.FO_Nullptr:
   movb $0, %al        # c = '\0'
   ret
 
@@ -61,20 +61,20 @@ FirstOf:
 
 LastOf:
   testq %rdi, %rdi    # s ?= nullptr
-  je .LONullptr       # if (s == nullptr) c = '\0';
+  je .LO_Nullptr       # if (s == nullptr) c = '\0';
   xorb %al, %al       # init: c = '\0'
 
-.LOIter:
+.LO_Iter:
   movb (%rdi), %r8b   # get a byte (char)
   testb %r8b, %r8b    # *s ?= '\0'
-  je .LORet           # if (*s == '\0') return;
+  je .LO_Ret           # if (*s == '\0') return;
   movb %r8b, %al      # else c = *s;
   incq %rdi           # next byte (char)
-  jmp .LOIter         # continue iteration
+  jmp .LO_Iter         # continue iteration
 
-.LORet:
+.LO_Ret:
   ret
 
-.LONullptr:
+.LO_Nullptr:
   movb $0, %al        # c = '\0'
   ret

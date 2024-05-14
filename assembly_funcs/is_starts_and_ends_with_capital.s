@@ -1,7 +1,7 @@
   .globl	IsStartsAndEndsWithCapital
 IsStartsAndEndsWithCapital:
   testq %rdi, %rdi    # s ?= nullptr
-  je .ISAEWC_RetFalse   # if (s == nullptr) return false; 
+  jz .ISAEWC_RetFalse # if (s == nullptr) return false; 
 
   # ----------------------      check LastOf     ----------------------
 
@@ -15,7 +15,7 @@ IsStartsAndEndsWithCapital:
   popq %rdi           # pop s from stack
 
   testl %eax, %eax    # ? !isupper(c)
-  je .ISAEWC_RetFalse   # if (!isupper(c)) return false; 
+  je .ISAEWC_RetFalse # if (!isupper(c)) return false; 
 
   # ----------------------      check FirstOf    ----------------------
 
@@ -29,7 +29,7 @@ IsStartsAndEndsWithCapital:
   popq %rdi           # pop s from stack
 
   testl %eax, %eax    # ? !isupper(c)
-  je .ISAEWC_RetFalse   # if (!isupper(c)) return false; 
+  jz .ISAEWC_RetFalse # if (!isupper(c)) return false; 
 
   # -------------------    both isupper == true    --------------------
 
@@ -44,10 +44,10 @@ IsStartsAndEndsWithCapital:
 
 FirstOf:
   testq %rdi, %rdi    # s ?= nullptr
-  je .FO_Nullptr       # if (s == nullptr) c = '\0';
+  je .FO_Nullptr      # if (s == nullptr) c = '\0';
   movb (%rdi), %r8b   # get a byte (char)
   testb %r8b, %r8b    # *s ?= '\0'
-  jne	.FO_NotEqual     # if (*s != '\0') c = *s;
+  jne	.FO_NotEqual    # if (*s != '\0') c = *s;
 
 .FO_NotEqual:
   movb %r8b, %al      # c = *s
@@ -61,16 +61,16 @@ FirstOf:
 
 LastOf:
   testq %rdi, %rdi    # s ?= nullptr
-  je .LO_Nullptr       # if (s == nullptr) c = '\0';
+  je .LO_Nullptr      # if (s == nullptr) c = '\0';
   xorb %al, %al       # init: c = '\0'
 
 .LO_Iter:
   movb (%rdi), %r8b   # get a byte (char)
   testb %r8b, %r8b    # *s ?= '\0'
-  je .LO_Ret           # if (*s == '\0') return;
+  je .LO_Ret          # if (*s == '\0') return;
   movb %r8b, %al      # else c = *s;
   incq %rdi           # next byte (char)
-  jmp .LO_Iter         # continue iteration
+  jmp .LO_Iter        # continue iteration
 
 .LO_Ret:
   ret

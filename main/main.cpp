@@ -47,12 +47,12 @@ int main() {
     std::cout << std::endl;
 
     // if cin fail
-    if (std::cin.eof()) goto end;
+    if (std::cin.eof()) break;
 
     strcpy(str_copy, str);
 
     for (int i = 0; str[i]; i++) str[i] = tolower(str[i]);  // to lower case
-    if (!strcmp(str, "quit") || !strcmp(str, "exit")) goto end;
+    if (!strcmp(str, "quit") || !strcmp(str, "exit")) break;
 
     if (IsStartsAndEndsWithCapital(str_copy)) {
       std::cout << " @property: Begins and ends with a capital letter."
@@ -73,7 +73,6 @@ int main() {
     }
   }
 
-end:
   std::cout << "Exiting the program..." << std::endl;
   return 0;
 }

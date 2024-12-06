@@ -4,7 +4,11 @@ project(Tests LANGUAGES C CXX ASM)
 
 set(Boost_USE_STATIC_LIBS OFF)
 
-find_package(Boost REQUIRED COMPONENTS locale unit_test_framework)
+if(POLICY CMP0167)
+  cmake_policy(SET CMP0167 NEW)
+endif()
+
+find_package(Boost REQUIRED COMPONENTS unit_test_framework)
 
 # ----------------------        asm tests        ----------------------
 file(GLOB_RECURSE ASM_FUNCS_TEST_SOURCES "assembly_funcs/*.cpp" "test.cpp")
